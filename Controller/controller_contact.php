@@ -1,6 +1,5 @@
 <?php 
-    include_once("../index.php");
-    
+       
     $conn = new mysqli('localhost:3306', 'root', 'Ridaica123', 'contactdb');
 
     

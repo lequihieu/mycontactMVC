@@ -1,5 +1,5 @@
 <?php
-    class Entity_Contact{
+    class EntityContact{
         public $id;
         public $name;
         public $phone;
