@@ -29,9 +29,12 @@ class ModelContact {
         return $conn->query($sqlDelete);
     }
     public function getContactById($conn, $id) {
-        $sqlGet = "SELECT name, phone, email from contactdb.info where id = $idUpdate";
+        $sqlGet = "SELECT name, phone, email from contactdb.info where id = $id";
         return $conn->query($sqlGet);
     }
-    
+    public function updateContact($conn, $name, $phone, $email, $id) {
+        $sqlUpdate = "UPDATE contactdb.info set name='" . $name . "', phone='" . $phone . "', email = '" . $email . "' WHERE id = $id";
+        return $conn->query($sqlUpdate);
+    }
 }
 ?>

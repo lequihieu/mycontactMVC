@@ -9,7 +9,10 @@
 </head>
 <body>
 <?php 
-  include("/Controller/controller_contact.php")
+  include("Controller/controller_contact.php");
+  include_once("View/show_list_contact.php");
+  $conn = new mysqli('localhost:3306', 'root', 'Ridaica123', 'contactdb');
+  $modelContact = new ModelContact();
 ?>
 <div class="container">
   <div class="row">
@@ -30,7 +33,7 @@
                       </div>  
                         <input type="hidden" name="id" value = "<?=$idUpdate?>">
                         <button class="btn btn-primary" type="submit" name="submit" onclick="return confirm('Want to Submit?')">Submit </button>
-                        <button class="btn btn-primary" type="submit" name="update" onclick="return confirm('Want to Update?')">Update</buttom>
+                        <button class="btn btn-primary" type="submit" name="updateById" onclick="return confirm('Want to Update?')">Update</buttom>
                   </form>
                 </div>
     </div>
@@ -43,19 +46,19 @@
                   </div>
                   <div>
                         <?php
-                          if(!isset($_POST['searchList'])) {
-                            $result = $C_Contact->allContactInfo($conn);
-                            showList($result);
-                          }    
+                          if(!isset($_POST['searchList'])) {  
+                          $result = $modelContact->allContactInfo($conn);
+                          showList($result);
+                          }
                         ?> 
                   </div>
                     <div>
                       <?php
-                          if(isset($_POST['searchList'])) {
+                          if(isset($_POST['searchList'])) { 
                             $textSearch = $_POST['textSearch'];
-                            $result = $C_Contact->searchContactByText($conn, $textSearch);
+                            $result = $modelContact->searchContactByText($conn, $textSearch);
                             showList($result);
-                          }  
+                            }
                       ?>
                     </div>
     </div>   
