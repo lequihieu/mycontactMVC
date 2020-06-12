@@ -13,6 +13,7 @@
   include_once("View/show_list_contact.php");
   $conn = new mysqli('localhost:3306', 'root', 'Ridaica123', 'contactdb');
   $modelContact = new ModelContact();
+  
 ?>
 <div class="container">
   <div class="row">
@@ -46,7 +47,7 @@
                   </div>
                   <div>
                         <?php
-                          if(!isset($_POST['searchList'])) {  
+                          if(!isset($_POST['searchList'])) { 
                           $result = $modelContact->allContactInfo($conn);
                           showList($result);
                           }
